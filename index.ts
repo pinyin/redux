@@ -1,5 +1,6 @@
 export {Action} from './src/Action'
 export {Actions} from './src/Actions'
+export {ActionsFromDiscriminatedUnion} from './src/ActionsFromDiscriminatedUnion'
 export {combineNamedReducers} from './src/combineNamedReducers'
 export {createNamedDispatchers} from './src/createNamedDispatchers'
 export {Dispatchers} from './src/Dispatchers'
