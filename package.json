@@ -1,7 +1,7 @@
 {
   "name": "@pinyin/redux",
   "version": "0.0.1",
-  "description": "A intra-component data flow pattern inspired by Redux and transactional logs",
+  "description": "Redux helpers",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
