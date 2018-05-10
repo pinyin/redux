@@ -1,8 +1,8 @@
 import {Reducer} from 'redux'
 import {Action} from './Action'
 
-export function getEmptyReducer<Store extends object, Actions extends object>(
-    defaultStore: Store
-): Reducer<Store, Action<Actions>> {
-    return (store: Store | undefined) => store || defaultStore
+export function getEmptyReducer<State extends object, Actions extends object>(
+    defaultState: State
+): Reducer<State, Action<Actions>> {
+    return (state: State | undefined) => state || defaultState
 }

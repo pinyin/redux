@@ -1,6 +1,6 @@
 {
   "name": "@pinyin/redux",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Redux helpers",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -18,8 +18,6 @@
   },
   "keywords": [
     "react",
-    "component",
-    "data flow",
     "redux"
   ],
   "author": "Bo Bao <bob432091@gmail.com> (https://github.com/pinyin)",
