@@ -1,8 +1,6 @@
-export type Action<Actions, ActionType extends keyof Actions = keyof Actions> = {
-    [Key in ActionType]: FluxStandardAction<Key, Actions[Key]>
-}[ActionType]
+import {Message} from '@pinyin/types'
 
-export type FluxStandardAction<Type, Payload> = {
-    type: Type
-    payload: Payload
-}
+export type Action<Actions extends object = object, ActionType extends keyof Actions = keyof Actions> = Message<{
+    [Type in ActionType]: Actions[Type]
+}>
+
