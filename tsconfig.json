@@ -10,6 +10,7 @@
     "declarationDir": "dist",
     "importHelpers": true,
     "noEmitHelpers": true,
+    "noErrorTruncation": true,
     "skipLibCheck": true,
     "allowSyntheticDefaultImports": true,
     "lib": [

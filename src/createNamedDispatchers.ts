@@ -1,3 +1,4 @@
+import {existing} from '@pinyin/maybe'
 import {ShapeOf} from '@pinyin/types'
 import {Store} from 'redux'
 import {Action} from './Action'
@@ -9,7 +10,10 @@ export function createNamedDispatchers<Actions extends object, TargetStore exten
 ): Dispatchers<Actions> {
     const actionTypes = Object.keys(shape) as Array<keyof Actions>
     return actionTypes.reduce(
-        (acc, curr) => Object.assign(acc, {[curr]: (payload: Actions[typeof curr]) => store.dispatch({type: curr, payload: payload})}),
+        (acc, curr) => Object.assign(acc, {
+            [curr]: (payload: Actions[typeof curr]) =>
+                store.dispatch(existing(payload) ? {type: curr, payload: payload} : {type: curr})
+        }),
         {} as Dispatchers<Actions>
     )
 }

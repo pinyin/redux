@@ -1,4 +1,5 @@
 import {notExisting} from '@pinyin/maybe'
+import {Discriminate} from '@pinyin/types'
 import {Reducer} from 'redux'
 import {Action} from './Action'
 import {Reducers} from './Reducers'
@@ -13,6 +14,6 @@ export function combineNamedReducers<State extends object, Actions extends objec
         if (notExisting(matchedReducer)) {
             return state || defaultState
         }
-        return matchedReducer(state, action)
+        return matchedReducer(state, action as Discriminate<Action<Actions>, typeof actionType>)
     }
 }
