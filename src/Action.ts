@@ -1,10 +1,9 @@
-import {nothing, Tagged, TagMap, TagOf} from '@pinyin/types'
+import {nothing, TaggedByMap, TagMap} from '@pinyin/types'
 
-export type Action<A extends TagMap = TagMap, AT extends TagOf<A> = TagOf<A>> = {
-    [Type in AT]: Tagged<Type> &
-    (A[Type] extends nothing ?
+export type Action<A extends TagMap = TagMap, AT extends keyof A = keyof A> = TaggedByMap<{
+    [Type in AT]: (A[Type] extends nothing ?
         {} :
         { payload: A[Type] })
-}[AT]
+}>
 
 
