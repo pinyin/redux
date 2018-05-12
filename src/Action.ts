@@ -1,6 +1,10 @@
-import {Message} from '@pinyin/types'
+import {nothing, Tagged, TagMap, TagOf} from '@pinyin/types'
 
-export type Action<Actions extends object = object, ActionType extends keyof Actions = keyof Actions> = Message<{
-    [Type in ActionType]: Actions[Type]
-}>
+export type Action<A extends TagMap = TagMap, AT extends TagOf<A> = TagOf<A>> = {
+    [Type in AT]: Tagged<Type> &
+    (A[Type] extends nothing ?
+        {} :
+        { payload: A[Type] })
+}[AT]
+
 

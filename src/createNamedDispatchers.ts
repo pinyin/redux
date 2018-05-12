@@ -4,16 +4,20 @@ import {Store} from 'redux'
 import {Action} from './Action'
 import {Dispatchers} from './Dispatchers'
 
-export function createNamedDispatchers<Actions extends object, TargetStore extends Store<any, Action<Actions>>>(
-    store: Store,
-    shape: ShapeOf<Actions>
-): Dispatchers<Actions> {
-    const actionTypes = Object.keys(shape) as Array<keyof Actions>
+export function createNamedDispatchers<A extends object, S extends Store<any, Action<A>> = Store<any, Action<A>>>(
+    store: S,
+    shape: ShapeOf<A>
+): Dispatchers<A> {
+    const actionTypes = Object.keys(shape) as Array<keyof A>
     return actionTypes.reduce(
         (acc, curr) => Object.assign(acc, {
-            [curr]: (payload: Actions[typeof curr]) =>
-                store.dispatch(existing(payload) ? {type: curr, payload: payload} : {type: curr})
+            [curr]: (payload: any) =>
+                store.dispatch((
+                    existing(payload) ?
+                        {type: curr, payload: payload} :
+                        {type: curr}
+                ) as any)
         }),
-        {} as Dispatchers<Actions>
+        {} as Dispatchers<A>
     )
 }
