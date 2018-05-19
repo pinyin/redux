@@ -5,5 +5,3 @@ export type Action<A extends TagMap = TagMap, AT extends keyof A = keyof A> = Ta
         {} :
         { payload: A[Type] })
 }>
-
-
