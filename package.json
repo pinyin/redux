@@ -1,6 +1,6 @@
 {
   "name": "@pinyin/redux",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Redux helpers",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -27,8 +27,11 @@
   },
   "homepage": "https://github.com/pinyin/redux#readme",
   "devDependencies": {
-    "typescript": "^2.8.3",
-    "redux": "^4.0.0"
+    "@types/jest": "^22.2.3",
+    "jest": "^22.4.4",
+    "redux": "^4.0.0",
+    "ts-jest": "^22.4.6",
+    "typescript": "^2.8.3"
   },
   "peerDependencies": {
     "redux": "^4.0.0"

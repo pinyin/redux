@@ -1,5 +1,6 @@
 export {Action} from './src/Action'
 export {combineNamedReducers} from './src/combineNamedReducers'
+export {createActionPublishers} from './src/createActionPublishers'
 export {createNamedDispatchers} from './src/createNamedDispatchers'
 export {Dispatchers} from './src/Dispatchers'
 export {getEmptyReducer} from './src/getEmptyReducer'
