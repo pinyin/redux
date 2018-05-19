@@ -1,6 +1,6 @@
 import {createStore} from 'redux'
 import {Action} from './Action'
-import {createActionPublishers} from './createActionPublishers'
+import {createPublishers} from './createPublishers'
 
 type State = number
 
@@ -9,7 +9,7 @@ type Actions = {
     minus: number
 }
 
-describe(`${createActionPublishers.name}`, () => {
+describe(`${createPublishers.name}`, () => {
     const store = createStore((state: State | undefined, action: Action<Actions>) => {
         state = state || 0
         switch (action.type) {
@@ -34,7 +34,7 @@ describe(`${createActionPublishers.name}`, () => {
         expect(store.getState()).toBe(3)
     })
 
-    const publishers = createActionPublishers<Actions>(store)
+    const publishers = createPublishers<Actions>(store)
 
     test('publishers should have methods with the same name as action types', () => {
         expect(publishers.plus).toBeInstanceOf(Function)
