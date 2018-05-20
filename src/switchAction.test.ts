@@ -18,7 +18,7 @@ describe(`${switchAction.name}`, () => {
         const next: State = switchAction<Actions, State>(action)
             .plus(num => prev + num)
             .minus(num => prev - num)
-            [DefaultTo](0)
+            [DefaultTo](prev)
 
         return next
     })
@@ -33,6 +33,6 @@ describe(`${switchAction.name}`, () => {
         store.dispatch({type: 'minus', payload: -2})
         expect(store.getState()).toBe(3)
         store.dispatch({type: 's', payload: -2})
-        expect(store.getState()).toBe(0)
+        expect(store.getState()).toBe(3)
     })
 })

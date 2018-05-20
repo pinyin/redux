@@ -30,7 +30,7 @@ export type Matchers<A extends object, B = void, C extends keyof A = keyof A> = 
         handler: A[Type] extends nothing ?
             () => B:
             (payload: A[Type]) => B
-    ) => Matchers<A, B, C>
+    ) => Matchers<A, B, Exclude<C, Type>>
 } & {
     [DefaultTo]: (defaultValue: B) => B
 }
