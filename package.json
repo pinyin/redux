@@ -1,6 +1,6 @@
 {
   "name": "@pinyin/redux",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "Redux helpers",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -9,7 +9,7 @@
   ],
   "sideEffects": false,
   "scripts": {
-    "prepublishOnly": "rm -rf dist && npx tsc",
+    "prepublishOnly": "rm -rf dist && npx tsc && npx jest",
     "test": "npx jest"
   },
   "repository": {
