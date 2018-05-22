@@ -13,7 +13,7 @@ type MathAction = Action<Actions>
 
 describe(`${switchAction.name}`, () => {
     const store = createStore((state: State | undefined, action: MathAction) => {
-        const prev: number = state || 0
+        const prev: State = state || 0
 
         const next: State = switchAction<Actions, State>(action)
             .plus(num => prev + num)
