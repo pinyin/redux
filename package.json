@@ -1,6 +1,6 @@
 {
   "name": "@pinyin/redux",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "description": "Redux helpers",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -31,14 +31,14 @@
     "jest": "^22.4.4",
     "redux": "^4.0.0",
     "ts-jest": "^22.4.6",
-    "typescript": "^2.8.3"
+    "typescript": "^2.9.0-dev.20180519"
   },
   "peerDependencies": {
     "redux": "^4.0.0"
   },
   "dependencies": {
     "@pinyin/maybe": "^0.0.7",
-    "@pinyin/types": "^0.0.16",
+    "@pinyin/types": "^0.0.17",
     "tslib": "^1.9.0"
   }
 }
