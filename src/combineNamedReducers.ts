@@ -4,7 +4,7 @@ import {Reducer} from 'redux'
 import {Action} from './Action'
 import {Reducers} from './Reducers'
 
-export function combineNamedReducers<S extends object, A extends object>(
+export function combineNamedReducers<S extends object, A extends Action>(
     defaultState: S,
     reducers: Reducers<S, A>
 ): Reducer<S, Action<A>> {

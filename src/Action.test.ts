@@ -32,8 +32,10 @@ if (action.type === 'anyType') {
     let b = action.payload
     b = {stringType: true}
     b = {symbolType: true}
-
+    b = {}
 }
+
+type AnyAction = Action
 
 
 type A = any extends nothing ? 'a' : 'b'
