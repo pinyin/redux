@@ -1,10 +1,10 @@
 import {existing} from '@pinyin/maybe'
-import {TagMap} from '@pinyin/types'
 import {Store} from 'redux'
 import {Action} from './Action'
+import {ActionTypeMap} from './ActionTypeMap'
 import {Dispatchers} from './Dispatchers'
 
-export function createPublishers<Actions extends TagMap>(
+export function createPublishers<Actions extends ActionTypeMap>(
     store: Store<any, Action<Actions>>
 ): Dispatchers<Actions> {
     return new Proxy<Dispatchers<Actions>>({} as any, {

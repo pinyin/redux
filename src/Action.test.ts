@@ -1,4 +1,5 @@
 import {nothing} from '@pinyin/types'
+import {Reducer} from 'redux'
 import {Action} from './Action'
 
 const SymbolType = Symbol('SymbolType')
@@ -35,8 +36,7 @@ if (action.type === 'anyType') {
     b = {}
 }
 
-type AnyAction = Action
-
+let reducer: Reducer<any, Action>
 
 type A = any extends nothing ? 'a' : 'b'
 

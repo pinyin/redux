@@ -1,6 +1,7 @@
-import {nothing, something, Tag, TaggedByMap, TagOf} from '@pinyin/types'
+import {nothing, something, Tag, TaggedByMap} from '@pinyin/types'
+import {ActionTypeMap} from './ActionTypeMap'
 
-export type Action<A extends ActionTypeMap = ActionTypeMap, AT extends TagOf<A> = TagOf<A>> = TaggedByMap<{
+export type Action<A extends ActionTypeMap = DefaultActionMap, AT extends keyof A = keyof A> = TaggedByMap<{
     [Type in AT]: something extends (
         A[Type] extends something ?
             something :
@@ -10,6 +11,6 @@ export type Action<A extends ActionTypeMap = ActionTypeMap, AT extends TagOf<A> 
         {}
 }>
 
-export type ActionTypeMap = {
-    [K in Tag]: any
+export type DefaultActionMap = {
+    [K in Tag]: nothing
 }
