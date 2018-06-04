@@ -4,7 +4,7 @@ import {Store} from 'redux'
 import {Action} from './Action'
 import {Dispatchers} from './Dispatchers'
 
-export function createPublishersByShape<A extends object, S extends Store<any, Action<A>> = Store<any, Action<A>>>(
+export function createDispatchersByShape<A extends object, S extends Store<any, Action<A>> = Store<any, Action<A>>>(
     store: S,
     shape: ShapeOf<A>
 ): Dispatchers<A> {

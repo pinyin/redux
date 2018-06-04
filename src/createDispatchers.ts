@@ -4,7 +4,7 @@ import {Action} from './Action'
 import {ActionTypeMap} from './ActionTypeMap'
 import {Dispatchers} from './Dispatchers'
 
-export function createPublishers<Actions extends ActionTypeMap>(
+export function createDispatchers<Actions extends ActionTypeMap>(
     store: Store<any, Action<Actions>>
 ): Dispatchers<Actions> {
     return new Proxy<Dispatchers<Actions>>({} as any, {
