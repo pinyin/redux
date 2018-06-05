@@ -1,14 +1,12 @@
-import {nothing, something, Tag, TaggedByMap} from '@pinyin/types'
+import {IsAny, nothing, something, Tag, TaggedByMap} from '@pinyin/types'
 import {ActionTypeMap} from './ActionTypeMap'
 
 export type Action<A extends ActionTypeMap = DefaultActionMap, AT extends keyof A = keyof A> = TaggedByMap<{
-    [Type in AT]: something extends (
+    [Type in AT]: IsAny<A[Type]> extends true ?
+        { payload: any } :
         A[Type] extends something ?
-            something :
-            nothing
-        ) ?
-        { payload: A[Type] } :
-        {}
+            { payload: A[Type] } :
+            {}
 }>
 
 export type DefaultActionMap = {

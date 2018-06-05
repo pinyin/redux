@@ -32,7 +32,7 @@ describe(`${switchAction.name}`, () => {
         expect(store.getState()).toBe(1)
         store.dispatch({type: 'minus', payload: -2})
         expect(store.getState()).toBe(3)
-        store.dispatch({type: 's', payload: -2})
+        store.dispatch({type: 's', payload: -1} as any)
         expect(store.getState()).toBe(3)
     })
 })
