@@ -3,24 +3,20 @@
     "outDir": "dist",
     "target": "es5",
     "module": "commonjs",
+    "jsx": "react",
     "esModuleInterop": true,
     "inlineSourceMap": true,
     "declaration": true,
+    "declarationMap": true,
     "strict": true,
     "declarationDir": "dist",
     "importHelpers": true,
     "noEmitHelpers": true,
-    "noErrorTruncation": true,
-    "noEmitOnError": true,
-    "skipLibCheck": true,
-    "allowSyntheticDefaultImports": true,
     "lib": [
-      "es6",
-      "es2016.array.include",
-      "dom"
+      "es6"
     ]
   },
   "include": [
-    "./index.ts"
+    "index.ts"
   ]
 }
