@@ -9,6 +9,8 @@ type Actions = {
     minus: number
 }
 
+const types: Array<keyof Actions> = ['plus', 'minus']
+
 describe(`${createDispatchers.name}`, () => {
     const store = createStore((state: State | undefined, action: Action<Actions>) => {
         state = state || 0
@@ -34,7 +36,7 @@ describe(`${createDispatchers.name}`, () => {
         expect(store.getState()).toBe(3)
     })
 
-    const publishers = createDispatchers<Actions>(store)
+    const publishers = createDispatchers<Actions>(store, types)
 
     test('publishers should have methods with the same name as action types', () => {
         expect(publishers.plus).toBeInstanceOf(Function)

@@ -5,17 +5,22 @@ import {ActionTypeMap} from './ActionTypeMap'
 import {Dispatchers} from './Dispatchers'
 
 export function createDispatchers<Actions extends ActionTypeMap>(
-    store: Store<any, Action<Actions>>
+    store: Store<any, Action<Actions>>,
+    types: Iterable<keyof Actions>
 ): Dispatchers<Actions> {
-    return new Proxy<Dispatchers<Actions>>({} as any, {
-        get(target: {}, p: PropertyKey, receiver: any): any {
-            return (payload: any) => {
-                store.dispatch(
-                    existing(payload) ?
-                        {type: p, payload: payload} as any :
-                        {type: p}
-                )
-            }
+    const dispatchWithType = (type: keyof Actions) => {
+        return (payload: any) => {
+            store.dispatch(
+                existing(payload) ?
+                    {type: type, payload: payload} as any :
+                    {type: type}
+            )
         }
-    })
+    }
+
+    const dispatchers = {} as any
+    for (let type of types) {
+        dispatchers[type] = dispatchWithType(type)
+    }
+    return dispatchers as Dispatchers<Actions>
 }

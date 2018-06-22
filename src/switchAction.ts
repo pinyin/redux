@@ -1,27 +1,24 @@
 import {existing} from '@pinyin/maybe'
 import {Action} from './Action'
-import {ActionMatchers, DefaultTo} from './ActionMatchers'
 
+export function switchAction<A extends object, B = void>(
+    action: Action<A>,
+    matcher: Matcher<A, B>
+): B {
+    const handler = matcher[action.type]
 
-export function switchAction<A extends object, B = void>(action: Action<A>): ActionMatchers<A, B> {
-    const proxy = new Proxy<ActionMatchers<A, B>>({} as any, {
-        get(target: any, p: PropertyKey, receiver: any): any {
-            if (p === DefaultTo) {
-                return (defaultValue: B) =>
-                    existing(target.value) ?
-                        target.value :
-                        defaultValue
-            } else {
-                return (handler: (payload: A[keyof A]) => B) => {
-                    if (action.type === p) {
-                        target.value = handler((action as any).payload)
-                    }
-                    return proxy
-                }
-            }
-        }
-    })
+    if (existing(handler)) {
+        return (handler as any)((action as any).payload) as B
+    }
 
-    return proxy
+    return matcher[Default]
+}
+
+export const Default = Symbol('Default')
+
+type Matcher<A extends object, B> = {
+    [type in keyof A]?: (payload: A[type]) => B
+} & {
+    [Default]: B
 }
 

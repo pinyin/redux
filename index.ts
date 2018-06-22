@@ -1,7 +1,6 @@
 export {Action} from './src/Action'
 export {combineNamedReducers, NamedReducers} from './src/combineNamedReducers'
 export {createDispatchers} from './src/createDispatchers'
-export {createDispatchersByShape} from './src/createDispatchersByShape'
 export {Dispatchers} from './src/Dispatchers'
 export {getEmptyReducer} from './src/getEmptyReducer'
 export {Reducers} from './src/Reducers'

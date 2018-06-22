@@ -12,6 +12,8 @@
     "declarationDir": "dist",
     "importHelpers": true,
     "noEmitHelpers": true,
+    "downlevelIteration": true,
+    "noErrorTruncation": true,
     "lib": [
       "es6"
     ]

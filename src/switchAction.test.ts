@@ -1,7 +1,6 @@
 import {createStore} from 'redux'
 import {Action} from './Action'
-import {DefaultTo} from './ActionMatchers'
-import {switchAction} from './switchAction'
+import {Default, switchAction} from './switchAction'
 
 type State = number
 
@@ -16,10 +15,11 @@ describe(`${switchAction.name}`, () => {
     const store = createStore((state: State | undefined, action: MathAction) => {
         const prev: State = state || 0
 
-        const next: State = switchAction<Actions, State>(action)
-            .plus(num => prev + num)
-            .minus(num => prev - num)
-            [DefaultTo](prev)
+        const next: number = switchAction<Actions, State>(action, {
+            plus: num => prev + num,
+            minus: num => prev - num,
+            [Default]: prev
+        })
 
         return next
     })
