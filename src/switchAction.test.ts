@@ -1,6 +1,7 @@
 import {createStore} from 'redux'
 import {Action} from './Action'
-import {DefaultTo, switchAction} from './switchAction'
+import {DefaultTo} from './ActionMatchers'
+import {switchAction} from './switchAction'
 
 type State = number
 
