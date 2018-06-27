@@ -45,5 +45,5 @@ let b: A = 'b'
 // let c: A = 'c' // this should report an error
 
 describe("Action", () => {
-    test("who needs tests?") // must have at least one test or Jest will complain
+    test("who needs tests?", () => {}) // must have at least one test or Jest will complain
 })
