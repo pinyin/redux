@@ -1,14 +1,4 @@
-import {IsAny, nothing, something, Tag, TaggedByMap} from '@pinyin/types'
-import {ActionTypeMap} from './ActionTypeMap'
+import {Message} from '@pinyin/types'
 
-export type Action<A extends ActionTypeMap = DefaultActionMap, AT extends keyof A = keyof A> = TaggedByMap<{
-    [Type in AT]: IsAny<A[Type]> extends true ?
-        { payload: any } :
-        A[Type] extends something ?
-            { payload: A[Type] } :
-            {}
-}>
+export type Action<A extends object, AT extends NonNullable<keyof A> = NonNullable<keyof A>> = Message<A, AT>
 
-export type DefaultActionMap = {
-    [K in Tag]: nothing
-}
