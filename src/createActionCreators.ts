@@ -1,5 +1,8 @@
 import {existing} from '@pinyin/maybe'
-import {IsNothing, Message} from '@pinyin/types'
+import {IsNothing} from '@pinyin/types'
+import {Action} from './Action'
+import {PAYLOAD} from './Payload'
+import {TYPE} from './Type'
 
 export function createActionCreators<A extends object, T extends NonNullable<keyof A> = NonNullable<keyof A>>(
     shape?: Iterable<T>
@@ -7,13 +10,13 @@ export function createActionCreators<A extends object, T extends NonNullable<key
     if (existing(shape)) {
         const creators = {} as any
         for (const type of shape) {
-            creators[type] = (payload: any) => ({type, payload}) as any
+            creators[type] = (payload: any) => ({[TYPE]: type, [PAYLOAD]: payload})
         }
         return creators
     } else {
         return new Proxy({} as any, {
             get(target: T, p: PropertyKey, receiver: any): any {
-                return (payload: any) => ({type: p, payload})
+                return (payload: any) => ({[TYPE]: p, [PAYLOAD]: payload})
             }
         })
     }
@@ -21,6 +24,6 @@ export function createActionCreators<A extends object, T extends NonNullable<key
 
 export type ActionCreators<A extends object, T extends NonNullable<keyof A> = NonNullable<keyof A>> = {
     [type in T]: IsNothing<A[type]> extends true ?
-        () => Message<A, type>:
-        (payload: A[type]) => Message<A, type>
+        () => Action<A, type> :
+        (payload: A[type]) => Action<A, type>
 }

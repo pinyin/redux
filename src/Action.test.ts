@@ -1,6 +1,7 @@
 import {nothing} from '@pinyin/types'
 import {Reducer} from 'redux'
 import {Action} from './Action'
+import {PAYLOAD} from './PAYLOAD'
 
 const SymbolType = Symbol('SymbolType')
 
@@ -20,17 +21,17 @@ type ActionTest = Action<{
 const action: ActionTest = {} as any
 
 if (action.type === 'stringType') {
-    let b = action.payload
+    let b = action[PAYLOAD]
     b = {stringType: true}
 }
 
 if (action.type === SymbolType) {
-    let b = action.payload
+    let b = action[PAYLOAD]
     b = {symbolType: true}
 }
 
 if (action.type === 'anyType') {
-    let b = action.payload
+    let b = action[PAYLOAD]
     b = {stringType: true}
     b = {symbolType: true}
     b = {}
