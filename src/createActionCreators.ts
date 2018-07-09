@@ -1,8 +1,8 @@
 import {existing} from '@pinyin/maybe'
 import {IsNothing} from '@pinyin/types'
 import {Action} from './Action'
-import {PAYLOAD} from './Payload'
-import {TYPE} from './Type'
+import {PAYLOAD} from './PAYLOAD'
+import {TYPE} from './TYPE'
 
 export function createActionCreators<A extends object, T extends NonNullable<keyof A> = NonNullable<keyof A>>(
     shape?: Iterable<T>
