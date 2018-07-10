@@ -1,6 +1,6 @@
 import {existing} from '@pinyin/maybe'
 import {IsNothing} from '@pinyin/types'
-import {Action} from './Action'
+import {ActionFromMap} from './ActionFromMap'
 import {PAYLOAD} from './PAYLOAD'
 import {TYPE} from './TYPE'
 
@@ -24,6 +24,6 @@ export function createActionCreators<A extends object, T extends NonNullable<key
 
 export type ActionCreators<A extends object, T extends NonNullable<keyof A> = NonNullable<keyof A>> = {
     [type in T]: IsNothing<A[type]> extends true ?
-        () => Action<A, type> :
-        (payload: A[type]) => Action<A, type>
+        () => ActionFromMap<A, type> :
+        (payload: A[type]) => ActionFromMap<A, type>
 }

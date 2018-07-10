@@ -1,11 +1,11 @@
 import {nothing} from '@pinyin/types'
 import {Reducer} from 'redux'
-import {Action} from './Action'
+import {ActionFromMap} from './ActionFromMap'
 import {PAYLOAD} from './PAYLOAD'
 
 const SymbolType = Symbol('SymbolType')
 
-type ActionTest = Action<{
+type ActionFromMapTest = ActionFromMap<{
     stringType: {
         stringType: true
     }
@@ -18,7 +18,7 @@ type ActionTest = Action<{
     }
 }>
 
-const action: ActionTest = {} as any
+const action: ActionFromMapTest = {} as any
 
 if (action.type === 'stringType') {
     let b = action[PAYLOAD]
@@ -37,7 +37,7 @@ if (action.type === 'anyType') {
     b = {}
 }
 
-let reducer: Reducer<any, Action>
+let reducer: Reducer<any, ActionFromMapTest>
 
 type A = any extends nothing ? 'a' : 'b'
 
@@ -45,6 +45,6 @@ let a: A = 'a'
 let b: A = 'b'
 // let c: A = 'c' // this should report an error
 
-describe("Action", () => {
+describe('ActionFromMap', () => {
     test("who needs tests?", () => {}) // must have at least one test or Jest will complain
 })

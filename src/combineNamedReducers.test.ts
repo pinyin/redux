@@ -1,5 +1,5 @@
 import {createStore} from 'redux'
-import {Action} from './Action'
+import {ActionFromMap} from './ActionFromMap'
 import {combineNamedReducers, NamedReducers} from './combineNamedReducers'
 import {PAYLOAD} from './PAYLOAD'
 import {TYPE} from './TYPE'
@@ -9,7 +9,7 @@ type A = {
     minus: number
 }
 
-type MathAction = Action<A>
+type MathAction = ActionFromMap<A>
 
 type State = number
 
