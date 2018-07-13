@@ -1,1 +1,1 @@
-export const PAYLOAD: 'content' = 'content'
+export const PAYLOAD: 'payload' = 'payload'
